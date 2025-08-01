@@ -4,4 +4,13 @@ import { createFromSource } from "fumadocs-core/search/server";
 // it should be cached forever
 export const revalidate = false;
 
-export const { staticGET: GET } = createFromSource(source);
+export const { staticGET: GET } = createFromSource(source, {
+  localeMap: {
+    "zh-CN": {
+      language: "english",
+    },
+    "en-US": {
+      language: "english",
+    },
+  },
+});

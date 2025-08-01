@@ -1,9 +1,21 @@
-import { docs } from '@/.source';
-import { loader } from 'fumadocs-core/source';
+import { docs } from "@/.source";
+import { loader } from "fumadocs-core/source";
 
-// See https://fumadocs.vercel.app/docs/headless/source-api for more info
+export const i18nConfig = {
+  defaultLanguage: "en-US",
+  languages: {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+  },
+} as const;
+
 export const source = loader({
-  // it assigns a URL to your pages
-  baseUrl: '/docs',
+  i18n: {
+    defaultLanguage: i18nConfig.defaultLanguage,
+    languages: Object.keys(i18nConfig.languages),
+    hideLocale: "never",
+    parser: "dir",
+  },
+  baseUrl: "/docs",
   source: docs.toFumadocsSource(),
 });
